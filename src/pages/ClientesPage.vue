@@ -1,5 +1,34 @@
 <template>
-  <Table :rows="rows" :columns="columns" />
+  <section
+    class="q-pa-md"
+    style="display: flex; justify-content: space-between"
+  >
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        font-size: 2em;
+        color: grey;
+        padding-top: 0.6em;
+      "
+    >
+      <q-icon
+        name="people"
+        style="padding-bottom: 17px; padding-right: 0.5em"
+      />
+      <p>Clientes</p>
+    </div>
+    <div class="q-pr-lg">
+      <q-input v-model="text" style="width: 30vw">
+        <template v-slot:prepend>
+          <q-icon name="search" />
+        </template>
+      </q-input>
+    </div>
+  </section>
+  <section>
+    <Table :rows="rows" :columns="columns" />
+  </section>
 </template>
 
 <script setup>
