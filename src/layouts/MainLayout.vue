@@ -21,7 +21,7 @@
       <q-list>
         <q-item-label header> Painel </q-item-label>
         <EssentialLink
-          @click="functionTest(link.title)"
+          @click="goRoute(link.title)"
           v-for="link in linksList"
           :key="link.title"
           v-bind="link"
@@ -37,45 +37,44 @@
 
 <script setup>
 import { defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 import EssentialLink from "components/EssentialLink.vue";
+
+const router = useRouter();
 
 const linksList = [
   {
     title: "Clientes",
     caption: "Carteira de Clientes",
     icon: "people",
-    link: "https://quasar.dev",
   },
   {
     title: "Estoque",
     caption: "Controle de Estoque",
     icon: "inventory_2",
-    link: "https://github.com/quasarframework",
   },
   {
     title: "Fluxo de Caixa",
     caption: "Controle de Despesas",
     icon: "account_balance",
-    link: "https://chat.quasar.dev",
   },
   {
     title: "Contas a Receber",
     caption: "Contas a Receber",
     icon: "payments",
-    link: "https://forum.quasar.dev",
   },
   {
     title: "Contas a Pagar",
     caption: "Contas a Pagar",
     icon: "paid",
-    link: "https://twitter.quasar.dev",
   },
 ];
 
 const leftDrawerOpen = ref(false);
 
-function functionTest(teste) {
-  console.log(teste);
+function goRoute(Route) {
+  const formatedRoute = Route.toLowerCase().replace(/\s/g, "-");
+  router.push(formatedRoute);
 }
 
 function toggleLeftDrawer() {
